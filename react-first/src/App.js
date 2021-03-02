@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>hello world</h1>
-        <button onClick = {this.clickMeHandler.bind(this,'Yashaswi Singh')} >Click Me</button>
+        <button className='Button' onClick = {this.clickMeHandler.bind(this,'Yashaswi Singh')} >Click Me</button>
         <Person name={this.state.persons[0].name}
          age={this.state.persons[0].age}
          clicked={this.clickMeHandler.bind(this,'WAiWAi')}>My hobbies are watching movies</Person>
