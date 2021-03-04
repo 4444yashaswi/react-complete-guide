@@ -7,8 +7,8 @@ class App extends Component {
     persons : [
               {name: "Yashaswi", age: 18},
               {name: "Random", age: 20}
-        ]
-           
+        ],
+    showPerson: false   
   }
 
   clickMeHandler = (newName) => {
@@ -30,17 +30,32 @@ class App extends Component {
     })
   }
 
+  showPersonsToggler = () => {
+    const temp = this.state.showPerson;
+    this.setState({showPerson: !temp});
+  }
+
   render() {
+    let persons = null;
+    if(this.state.showPerson) {
+      persons = (
+         <div>
+          <Person name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          clicked={this.clickMeHandler.bind(this,'WAiWAi')}>My hobbies are watching movies</Person>
+          <Person name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            valChange={this.changeValueHandler} />
+         </div>
+        );
+    }
+
+
     return (
       <div className="App">
         <h1>hello world</h1>
-        <button className='Button' onClick = {this.clickMeHandler.bind(this,'Yashaswi Singh')} >Click Me</button>
-        <Person name={this.state.persons[0].name}
-         age={this.state.persons[0].age}
-         clicked={this.clickMeHandler.bind(this,'WAiWAi')}>My hobbies are watching movies</Person>
-        <Person name={this.state.persons[1].name}
-         age={this.state.persons[1].age}
-         valChange={this.changeValueHandler} />
+        <button className='Button' onClick = {this.showPersonsToggler} >Click Me</button>
+        {persons}
       </div>
     );
   }
