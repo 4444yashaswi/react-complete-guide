@@ -11,25 +11,13 @@ class App extends Component {
     showPerson: false   
   }
 
-  clickMeHandler = (newName) => {
-    //console.log('\'Click Me\' was clicked');
-    this.setState({
-        persons : [
-              {name: newName, age: 18},
-              {name: "Random", age: 200000}
-        ]
-      })
+  deletePersonHandler = (personIndex) => {
+    const persons=this.state.persons;
+    persons.splice(personIndex,1);
+    this.setState({persons: persons})
   }
 
-  changeValueHandler = (event) => {
-    this.setState({
-      persons : [
-              {name: 'Yashaswi', age: 18},
-              {name: event.target.value, age: 20}
-      ]
-    })
-  }
-
+  
   showPersonsToggler = () => {
     const temp = this.state.showPerson;
     this.setState({showPerson: !temp});
@@ -41,8 +29,9 @@ class App extends Component {
       persons = (
          <div>
           {
-            this.state.persons.map(person => {
+            this.state.persons.map((person , index) => {
               return <Person
+              clicked = {() => this.deletePersonHandler(index)}
               name= {person.name}
               age= {person.age} />
             })
