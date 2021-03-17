@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -45,6 +46,20 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+      backgroundColor: 'green',
+      font: 'inherit',
+      color: 'white',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor : 'lightgreen',
+        color : 'black'
+      }
+    };
+
     let persons = null;
     if(this.state.showPerson) {
       persons = (
@@ -61,16 +76,32 @@ class App extends Component {
           }
           </div>
         );
+
+        style.backgroundColor = 'red';
+        style [':hover'] = {
+        backgroundColor : 'salmon',
+        color : 'black'
+      }
+    }
+
+    //here we re trying to allocate css classes dynamically:
+    const classes = [];
+    if (this.state.persons.length <=2){
+      classes.push('red');
+    }
+    if (this.state.persons.length <=1){
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>hello world</h1>
-        <button className='Button' onClick = {this.showPersonsToggler} >Click Me</button>
+        <p className={classes.join(' ')} >This is really working!</p>
+        <button style={style} onClick = {this.showPersonsToggler} >Click Me</button>
         {persons}
       </div>
     );
   }
 }
 
-export default App;
+export default Radium(App);
