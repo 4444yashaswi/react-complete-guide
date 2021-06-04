@@ -1,37 +1,38 @@
+import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 import './App.css';
 
 function App() {
-  const items = [
-  {
+  const [items , setItems] = useState([{
     id: 'e1',
     title: 'Pencil',
     amount: 2,
-    date: new Date(2021, 0, 1),
+    date: new Date(2021, 2, 1),
   },
   {
     id: 'e2',
     title: 'Book',
     amount: 200,
-    date: new Date(),
+    date: new Date(2019, 5, 2),
   },
   {
     id: 'e3',
     title: 'sofa',
     amount: 20000,
-    date: new Date(),
+    date: new Date(2020, 8, 7),
   },
   {
     id: 'e4',
     title: 'Pen',
     amount: 20,
-    date: new Date(),
-  }
-  ];
+    date: new Date(2021, 4, 11),
+  }]);
 
   const addExpenseHandler = (expense) => {
-    console.log(expense);
+    setItems((prev_expense) => {
+      return [expense,...prev_expense];
+    });
   };
 
 
