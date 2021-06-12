@@ -1,0 +1,12 @@
+.user-form__container {
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.user-form__container input {
+	width: 98%;
+	border: solid 2px lightgrey;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	font-size: medium;
+}
