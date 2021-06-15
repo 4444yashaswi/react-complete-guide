@@ -5,6 +5,7 @@
 
 .user-form__container input {
 	width: 98%;
+	height: 25px;
 	border: solid 2px lightgrey;
 	margin-bottom: 10px;
 	margin-top: 5px;
