@@ -23,7 +23,10 @@ const UserInput = props => {
 			return;
 		}
 
-		console.log('name: '+username+' age: '+age);
+		//console.log('name: '+username+' age: '+age);
+		props.setData((prevData) => {
+			return [...prevData , {name: username , age: age}];
+		});
 		setAge('');
 		setUsername('');
 	};

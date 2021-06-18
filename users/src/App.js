@@ -10,7 +10,7 @@ function App() {
   return (
     <div className = 'app'>
       {/*User Input*/}
-      <UserInput />
+      <UserInput data = {data} setData = {setData} />
 
 
       {/*User Info*/}
